@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0c1822">
+  <title>Economics practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <h1>Economics <span>// PRACTICE</span></h1>
+      <p>HKDSE · MICRO + MACRO</p>
+    </div>
+    <p id="score" class="score">0 CORRECT · 0 ANSWERED</p>
+  </header>
+
+  <div class="modes" role="tablist">
+    <button type="button" id="mode-mcq" class="mode on" data-mode="mcq">MCQ</button>
+    <button type="button" id="mode-lq" class="mode" data-mode="lq">LONG</button>
+  </div>
+
+  <section class="controls">
+    <label>Subject
+      <select id="subject">
+        <option>Both</option>
+        <option>Micro</option>
+        <option>Macro</option>
+      </select>
+    </label>
+    <label>Topic
+      <select id="topic"></select>
+    </label>
+    <label class="check"><input id="shuffle" type="checkbox"> Shuffle</label>
+    <button type="button" id="wrong" class="wrong-chip">Wrong 0</button>
+  </section>
+
+  <p id="progress" class="progress"></p>
+  <main id="stage"></main>
+
+  <footer class="bar">
+    <button type="button" id="prev">Previous</button>
+    <button type="button" id="next">Next</button>
+    <button type="button" id="action" class="gold">Check answer</button>
+  </footer>
+
+  <dialog id="wrong-dialog">
+    <header>
+      <h2>Wrong questions</h2>
+      <p id="wrong-hint"></p>
+    </header>
+    <div id="wrong-list"></div>
+    <footer>
+      <button type="button" id="wrong-close">Close</button>
+      <button type="button" id="redo" class="danger">Redo these</button>
+    </footer>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

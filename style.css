@@ -177,7 +177,15 @@ select {
   border: 1px solid var(--paper-line);
   padding: 10px;
 }
-.figures img { display: block; width: 100%; height: auto; margin-bottom: 8px; }
+.figures img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 420px);
+  max-height: 240px;
+  height: auto;
+  margin: 0 auto 8px;
+  object-fit: contain;
+}
 .figures p { margin: 0; color: var(--paper-muted); font-size: 0.82rem; }
 .figures a { color: var(--navy); font-weight: 700; }
 .diagram {

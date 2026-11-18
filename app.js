@@ -174,15 +174,16 @@ function render() {
   let html = `<p class="meta">${meta}</p><article class="paper">${escapeText(question.text)}</article>`;
   if (question.diagrams && question.diagrams.length) {
     const pictures = question.diagrams
-      .map((src) => `<img src="${escapeText(src)}" alt="Diagram from the original PDF">`)
+      .map((src) => `<img src="${escapeText(src)}" alt="Diagram">`)
       .join("");
-    const pdfLink = question.pdf
-      ? ` · <a href="${escapeText(question.pdf)}" target="_blank" rel="noopener">Open the original PDF</a>`
-      : "";
-    html += `<div class="figures">${pictures}<p>Diagram from the original PDF${pdfLink}</p></div>`;
+    const pdfLink = question.kind === "lq" || !question.pdf
+      ? ""
+      : ` · <a href="${escapeText(question.pdf)}" target="_blank" rel="noopener">Open the original PDF</a>`;
+    const caption = question.kind === "lq" ? "" : `<p>Diagram from the original PDF${pdfLink}</p>`;
+    html += `<div class="figures">${pictures}${caption}</div>`;
   }
   const showDiagram = question.hasDiagram || (saved.revealed && question.answerHasDiagram && !question.hasDiagram);
-  if (showDiagram && question.pdf && !(question.diagrams && question.diagrams.length)) {
+  if (question.kind !== "lq" && showDiagram && question.pdf && !(question.diagrams && question.diagrams.length)) {
     const note = question.hasDiagram
       ? "This question includes a diagram or picture."
       : "The marking scheme includes a diagram.";
